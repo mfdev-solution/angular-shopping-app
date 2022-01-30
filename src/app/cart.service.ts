@@ -8,7 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class CartService {
   items: Product[] = [];
 
-  constructor() { }
+  constructor(
+    private http:HttpClient,
+  ) { }
   /**
    * The addToCart() method appends a product to an array of items.
    */
@@ -28,6 +30,10 @@ export class CartService {
   clearCart() {
     this.items = [];
     return this.items;
+  }
+  
+  getShippingPrices() {
+    return this.http.get<{type: string, price: number}[]>('/assets/shipping.json');
   }
 
 }
