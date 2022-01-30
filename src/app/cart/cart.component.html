@@ -4,6 +4,6 @@
   <span>{{ item.name }}</span>
   <span> {{ item.price | currency }}</span>
 </div>
-<p>
+<p *ngIf="items[0]">
   <button (click)="cleanCart()">clear</button>
 </p>
